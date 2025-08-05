@@ -1742,3 +1742,30 @@ body {
         bottom: -60px;
     }
 }
+
+/* Unvisited link */
+a:link {
+  color: #7f8c8d;
+  text-decoration: none; /* Remove underline */
+}
+
+/* Visited link */
+a:visited {
+  color: #AF87B0;
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Mouse over link */
+a:hover {
+  color: #E8BAE8;
+  text-decoration: underline; /* Add underline on hover */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Selected link */
+a:active {
+  color: #E897E8;
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
