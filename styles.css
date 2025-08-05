@@ -659,7 +659,7 @@ body {
 /* Contact Section */
 .contact {
     padding: 80px 0;
-    background: var(--light-bg);
+    background: #1a1a2e;
 }
 
 .contact-content {
@@ -671,7 +671,7 @@ body {
 .contact-info h3 {
     font-size: 1.8rem;
     margin-bottom: 2rem;
-    color: var(--text-dark);
+    color: var(--white);
 }
 
 .contact-item {
@@ -690,11 +690,11 @@ body {
 .contact-item h4 {
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
-    color: var(--text-dark);
+    color: var(--white);
 }
 
 .contact-item p {
-    color: var(--text-light);
+    color: #cbd5e1;
 }
 
 .social-links {
@@ -704,7 +704,7 @@ body {
 .social-links h4 {
     font-size: 1.1rem;
     margin-bottom: 1rem;
-    color: var(--text-dark);
+    color: var(--white);
 }
 
 .social-links .social-icons {
