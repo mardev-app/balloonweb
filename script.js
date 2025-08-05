@@ -88,7 +88,7 @@ const animateNumbers = (element, target, duration = 2000) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.service-card, .gallery-item, .contact-item, .testimonial-card, .why-choose-item');
+    const animateElements = document.querySelectorAll('.service-card, .gallery-item, .contact-item, .testimonial-card, .why-choose-item, .quote-card');
     
     animateElements.forEach(el => {
         el.style.opacity = '0';
@@ -110,6 +110,50 @@ document.addEventListener('DOMContentLoaded', () => {
         header.style.transform = 'translateY(20px)';
         header.style.transition = 'all 0.6s ease';
         observer.observe(header);
+    });
+
+    // Enhanced quote card animation
+    const quoteCard = document.querySelector('.quote-card');
+    if (quoteCard) {
+        const quoteIcon = quoteCard.querySelector('.quote-icon');
+        const quoteFeatures = quoteCard.querySelectorAll('.quote-features li');
+        
+        // Animate features one by one when card comes into view
+        const quoteObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    quoteFeatures.forEach((feature, index) => {
+                        setTimeout(() => {
+                            feature.style.opacity = '1';
+                            feature.style.transform = 'translateX(0)';
+                        }, index * 150);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        quoteObserver.observe(quoteCard);
+        
+        // Set initial state for features
+        quoteFeatures.forEach(feature => {
+            feature.style.opacity = '0';
+            feature.style.transform = 'translateX(-20px)';
+            feature.style.transition = 'all 0.4s ease';
+        });
+    }
+
+    // Testimonial star animation
+    const testimonialStars = document.querySelectorAll('.featured-testimonial .stars i');
+    testimonialStars.forEach((star, index) => {
+        star.addEventListener('mouseenter', () => {
+            star.style.transform = 'scale(1.2) rotate(20deg)';
+            star.style.color = '#ff6b9d';
+        });
+        
+        star.addEventListener('mouseleave', () => {
+            star.style.transform = 'scale(1) rotate(0deg)';
+            star.style.color = '#ffd700';
+        });
     });
 });
 
@@ -345,6 +389,51 @@ document.querySelectorAll('.btn').forEach(button => {
             ripple.remove();
         }, 600);
     });
+});
+
+// Enhanced footer animations
+const footerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const footerSections = entry.target.querySelectorAll('.footer-section');
+            footerSections.forEach((section, index) => {
+                setTimeout(() => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+            
+            const socialIcons = entry.target.querySelectorAll('.social-icon');
+            socialIcons.forEach((icon, index) => {
+                setTimeout(() => {
+                    icon.style.opacity = '1';
+                    icon.style.transform = 'translateY(0) scale(1)';
+                }, 800 + (index * 100));
+            });
+        }
+    });
+}, { threshold: 0.2 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const footer = document.querySelector('.footer');
+    if (footer) {
+        // Set initial state
+        const footerSections = footer.querySelectorAll('.footer-section');
+        footerSections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease';
+        });
+        
+        const socialIcons = footer.querySelectorAll('.social-icon');
+        socialIcons.forEach(icon => {
+            icon.style.opacity = '0';
+            icon.style.transform = 'translateY(20px) scale(0.8)';
+            icon.style.transition = 'all 0.5s ease';
+        });
+        
+        footerObserver.observe(footer);
+    }
 });
 
 // Add ripple animation to CSS
