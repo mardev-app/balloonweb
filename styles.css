@@ -1759,7 +1759,7 @@ a:visited {
 /* Mouse over link */
 a:hover {
   color: #E8BAE8;
-  text-decoration: underline; /* Add underline on hover */
+  text-decoration: none; /* Add underline on hover */
   transition: color 0.6s ease; /* Smooth color transition */
 }
 
